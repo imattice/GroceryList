@@ -10,18 +10,20 @@ import SwiftUI
 
 struct ListView: View {
 	@State var newItem: String 				= "Item Here"
-	@State var items: [String]				= ["Apples", "Oranges", "Potatoes"]
+	@State var items: [Item]				= [Item]()
 
     var body: some View {
 		NavigationView {
 			VStack {
 				TextField("New item", text: $newItem)
 					.padding(.horizontal)
-//				List(items) { item in
-//					Text(item)
-//				}
+				List {
+					ForEach(items) { item in
+						ListRowView(item: item)
+					}
+				}
 			}
-		.navigationBarTitle("Title")
+//		.navigationBarTitle("Title")
 		.navigationBarItems(
 			leading: Button(action: {
 				print("Settings Button Tapped") })
@@ -37,6 +39,11 @@ struct ListView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView()
+//		let sampleItems =
+        ListView(newItem: "",
+				 items: [
+					Item(name: "Apple"),
+					Item(name: "Orange"),
+					Item(name: "Bread")		])
     }
 }

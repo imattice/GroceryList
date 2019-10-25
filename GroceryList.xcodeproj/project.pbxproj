@@ -15,6 +15,8 @@
 		811C9CF52362A80A00ADD066 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811C9CF32362A80A00ADD066 /* LaunchScreen.storyboard */; };
 		811C9D002362A80A00ADD066 /* GroceryListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9CFF2362A80A00ADD066 /* GroceryListTests.swift */; };
 		811C9D0B2362A80A00ADD066 /* GroceryListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D0A2362A80A00ADD066 /* GroceryListUITests.swift */; };
+		811C9D192362B93900ADD066 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D182362B93900ADD066 /* Item.swift */; };
+		811C9D1B2362BCAA00ADD066 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D1A2362BCAA00ADD066 /* ListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		811C9D062362A80A00ADD066 /* GroceryListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		811C9D0A2362A80A00ADD066 /* GroceryListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListUITests.swift; sourceTree = "<group>"; };
 		811C9D0C2362A80A00ADD066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		811C9D182362B93900ADD066 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		811C9D1A2362BCAA00ADD066 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				811C9CE82362A80800ADD066 /* AppDelegate.swift */,
 				811C9CEA2362A80800ADD066 /* SceneDelegate.swift */,
 				811C9CEC2362A80800ADD066 /* ListView.swift */,
+				811C9D1A2362BCAA00ADD066 /* ListRowView.swift */,
+				811C9D182362B93900ADD066 /* Item.swift */,
 				811C9CEE2362A80A00ADD066 /* Assets.xcassets */,
 				811C9CF32362A80A00ADD066 /* LaunchScreen.storyboard */,
 				811C9CF62362A80A00ADD066 /* Info.plist */,
@@ -267,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811C9D192362B93900ADD066 /* Item.swift in Sources */,
 				811C9CE92362A80800ADD066 /* AppDelegate.swift in Sources */,
+				811C9D1B2362BCAA00ADD066 /* ListRowView.swift in Sources */,
 				811C9CEB2362A80800ADD066 /* SceneDelegate.swift in Sources */,
 				811C9CED2362A80800ADD066 /* ListView.swift in Sources */,
 			);
