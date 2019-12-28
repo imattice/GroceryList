@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ListView: View {
+struct Home: View {
 	@State var newItem: String 				= "Item Here"
 	@State var items: [Item]				= [Item]()
 
@@ -19,11 +19,12 @@ struct ListView: View {
 					.padding(.horizontal)
 				List {
 					ForEach(items) { item in
-						ListRowView(item: item)
+						ListRow(item: item)
 					}
+				
 				}
 			}
-//		.navigationBarTitle("Title")
+		.navigationBarTitle("Title")
 		.navigationBarItems(
 			leading: Button(action: {
 				print("Settings Button Tapped") })
@@ -37,13 +38,10 @@ struct ListView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
+struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
 //		let sampleItems =
-        ListView(newItem: "",
-				 items: [
-					Item(name: "Apple"),
-					Item(name: "Orange"),
-					Item(name: "Bread")		])
+        Home(newItem: "",
+				 items: [sampleList[0],sampleList[1],sampleList[2]])
     }
 }
