@@ -20,7 +20,7 @@ struct ListRow: View {
 			VStack {
 				Text(String(item.quantity.count))
 					.font(.title)
-				Text(String(item.quantity.measurement))
+				Text(String(item.quantity.measurement.pluralize()))
 					.font(.caption)
 					.italic()
 			}

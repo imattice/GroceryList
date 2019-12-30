@@ -19,6 +19,9 @@
 		811C9D0B2362A80A00ADD066 /* GroceryListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D0A2362A80A00ADD066 /* GroceryListUITests.swift */; };
 		811C9D192362B93900ADD066 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D182362B93900ADD066 /* Item.swift */; };
 		811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D1A2362BCAA00ADD066 /* ListRow.swift */; };
+		81A5D3EE23BAB827008F57A5 /* Pluralize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5D3ED23BAB827008F57A5 /* Pluralize.swift */; };
+		81A5D3EF23BAB827008F57A5 /* Pluralize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5D3ED23BAB827008F57A5 /* Pluralize.swift */; };
+		81A5D3F023BAB827008F57A5 /* Pluralize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A5D3ED23BAB827008F57A5 /* Pluralize.swift */; };
 		81A8F1D0236FFDCE00EF3816 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1CF236FFDCE00EF3816 /* ItemData.swift */; };
 		81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */; };
 		88F3A67FAE3FD0D650517C97 /* Pods_GroceryList_GroceryListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40E7AD979D2D89BBA23DE57B /* Pods_GroceryList_GroceryListUITests.framework */; };
@@ -40,6 +43,19 @@
 			remoteInfo = GroceryList;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		81A5D3EC23BAB3EB008F57A5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1BD844BF348294024BAFDA49 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +80,7 @@
 		811C9D0C2362A80A00ADD066 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		811C9D182362B93900ADD066 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		811C9D1A2362BCAA00ADD066 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		81A5D3ED23BAB827008F57A5 /* Pluralize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pluralize.swift; sourceTree = "<group>"; };
 		81A8F1CB236E4E8B00EF3816 /* GroceryList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroceryList-Bridging-Header.h"; sourceTree = "<group>"; };
 		81A8F1CF236FFDCE00EF3816 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRecord.swift; sourceTree = "<group>"; };
@@ -150,6 +167,7 @@
 				811C9CF62362A80A00ADD066 /* Info.plist */,
 				811C9CF02362A80A00ADD066 /* Preview Content */,
 				81A8F1CB236E4E8B00EF3816 /* GroceryList-Bridging-Header.h */,
+				81A5D3ED23BAB827008F57A5 /* Pluralize.swift */,
 			);
 			path = GroceryList;
 			sourceTree = "<group>";
@@ -202,6 +220,7 @@
 				811C9CE22362A80800ADD066 /* Frameworks */,
 				811C9CE32362A80800ADD066 /* Resources */,
 				81A8F1CE236E4ECB00EF3816 /* New Relic dSYM Upload */,
+				81A5D3EC23BAB3EB008F57A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -415,6 +434,7 @@
 			files = (
 				81A8F1D0236FFDCE00EF3816 /* ItemData.swift in Sources */,
 				81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */,
+				81A5D3EE23BAB827008F57A5 /* Pluralize.swift in Sources */,
 				811C9D192362B93900ADD066 /* Item.swift in Sources */,
 				811C9CE92362A80800ADD066 /* AppDelegate.swift in Sources */,
 				811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */,
@@ -427,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A5D3EF23BAB827008F57A5 /* Pluralize.swift in Sources */,
 				811C9D002362A80A00ADD066 /* GroceryListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A5D3F023BAB827008F57A5 /* Pluralize.swift in Sources */,
 				811C9D0B2362A80A00ADD066 /* GroceryListUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
