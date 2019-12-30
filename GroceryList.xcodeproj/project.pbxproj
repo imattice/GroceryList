@@ -44,19 +44,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		81A5D3EC23BAB3EB008F57A5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		1BD844BF348294024BAFDA49 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		20ACFDAA455655372245AFE6 /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -220,7 +207,6 @@
 				811C9CE22362A80800ADD066 /* Frameworks */,
 				811C9CE32362A80800ADD066 /* Resources */,
 				81A8F1CE236E4ECB00EF3816 /* New Relic dSYM Upload */,
-				81A5D3EC23BAB3EB008F57A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -612,6 +598,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GroceryList/Preview Content\"";
 				DEVELOPMENT_TEAM = VNA55J4REY;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,6 +626,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"GroceryList/Preview Content\"";
 				DEVELOPMENT_TEAM = VNA55J4REY;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = GroceryList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

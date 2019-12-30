@@ -16,11 +16,10 @@ struct ListRow: View {
 			item.isChecked ?
 				Image(systemName: "checkmark") :
 				Image(systemName: "square")
-
 			VStack {
 				Text(String(item.quantity.count))
 					.font(.title)
-				Text(String(item.quantity.measurement.pluralize()))
+				Text(String(item.quantity.measurement))
 					.font(.caption)
 					.italic()
 			}
@@ -54,14 +53,13 @@ struct ListRowPreview: PreviewProvider {
 		let beans = sampleList[2]
 		let detergent = sampleList[13]
 
-		return
-		Group {
-			ListRow(item: bread)
-			ListRow(item: apple)
-			ListRow(item: beans)
-			ListRow(item: detergent)
-		}
-		.previewLayout(.fixed(width: 300, height: 50))
+		return Group {
+				ListRow(item: bread)
+				ListRow(item: apple)
+				ListRow(item: beans)
+				ListRow(item: detergent)
+			}
+			.previewLayout(.fixed(width: 300, height: 50))
 
     }
 }
