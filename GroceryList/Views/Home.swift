@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct Home: View {
-	@State var newItem: String 				= "Item Here"
+	@State var newItem: String              = ""
 	@State var items: [Item]				= [Item]()
 
     var body: some View {
 		NavigationView {
 			VStack {
-				TextField("New item", text: $newItem)
+                TextField("New item", text: $newItem)
 					.padding(.horizontal)
 				List {
 					ForEach(items) { item in
@@ -27,6 +27,7 @@ struct Home: View {
 		.navigationBarTitle("Title")
 		.navigationBarItems(
 			leading: Button(action: {
+				NewRelic.crashNow()
 				print("Settings Button Tapped") })
 				{ Image(systemName: "gear") },
 			trailing: Button(action: {
@@ -40,8 +41,7 @@ struct Home: View {
 
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
-//		let sampleItems =
         Home(newItem: "",
-				 items: [sampleList[0],sampleList[1],sampleList[2]])
+				 items: sampleList)
     }
 }

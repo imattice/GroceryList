@@ -7,23 +7,29 @@
 //
 
 import Foundation
+import Plurals
 
-struct Item: Identifiable {
+struct Item: Identifiable, Hashable {
 	var id: String 		= UUID().uuidString
 	var name: String
+	var variety: String?
 	private var count: Int
 	private var measurement: String
-//	var quantity: (count: Int, measurement: String)
-//	var measurement: Measurement
-	var variety: String?
 	var aisle: Aisle
-//	var notes: String?
 
+	///A tuple containing the total remaining count of the item as well as the pluralized measurement label
 	var quantity: (count: Int, measurement: String) {
 		if self.count > 1 {
-			return (count: count, measurement: measurement.pluralize())
+			return (count: count, measurement: measurement.plural())
 		}
 		return (count: count, measurement: measurement)
+	}
+	///A string containing both the variety and the name
+	var label: String {
+		var modifiedName: String {
+			if count > 1 { return name.plural() } else { return name } }
+		guard let variety = variety else { return modifiedName }
+		return "\(variety) \(modifiedName)"
 	}
 
 	var isChecked: Bool
@@ -35,13 +41,8 @@ struct Item: Identifiable {
 		self.isChecked		= isChecked
 		self.count 			= quantity.count
 		self.measurement	= quantity.measurement
-
-//		if quantity.count > 1 {
-//			self.quantity	= (count: quantity.count, measurement: quantity.measurement.pluralize()) }
-//		else {
-//			self.quantity 	= (count: quantity.count, measurement: quantity.measurement) }
-
 	}
+    
 	init(name: String, count: Int, variety: String?, aisle: Aisle, isChecked: Bool = false) {
 		self.init(name: name, quantity: (count: count, measurement: "individual"), variety: variety, aisle: aisle, isChecked: isChecked)
 	}

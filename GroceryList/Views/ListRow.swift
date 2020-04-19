@@ -13,34 +13,35 @@ struct ListRow: View {
 
 	var body: some View {
 		HStack {
+		//Checkmark
 			item.isChecked ?
 				Image(systemName: "checkmark") :
 				Image(systemName: "square")
+
+		//Quantity
 			VStack {
 				Text(String(item.quantity.count))
 					.font(.title)
+				if item.quantity.measurement != "individual" {
 				Text(String(item.quantity.measurement))
 					.font(.caption)
 					.italic()
+					.minimumScaleFactor(0.7)
+					.lineLimit(1)
+				}
 			}
-			.frame(width: 60, height: nil, alignment: .center)
+			.frame(width: 40, height: nil, alignment: .center)
 
-			VStack(alignment: .leading) {
-				Text(item.name.capitalized)
-					.font(.headline)
-//				if let variety = item.variety {
-				Text(item.variety!.lowercased())
-						.font(.subheadline)
-						.italic()
-//				}
-			}
-//			.padding(.horizontal)
-
+		//Label
+            Text(item.quantity.count < 1 ? item.label.capitalized.plural() : item.label.capitalized)
+				.font(.title)
+				.minimumScaleFactor(0.5)
+				.lineLimit(2)
+				.allowsTightening(true)
 			Spacer()
 
 		}
 		.padding(.horizontal)
-//		.padding(.leading, 0)
 	}
 }
 
