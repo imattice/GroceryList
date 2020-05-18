@@ -22,7 +22,7 @@ struct ListRow: View {
 			VStack {
 				Text(String(item.quantity.count))
 					.font(.title)
-				if item.quantity.measurement != "individual" {
+				if item.quantity.measurement != "individual" && item.quantity.measurement != "individuals" {
 				Text(String(item.quantity.measurement))
 					.font(.caption)
 					.italic()
@@ -33,7 +33,8 @@ struct ListRow: View {
 			.frame(width: 40, height: nil, alignment: .center)
 
 		//Label
-            Text(item.quantity.count < 1 ? item.label.capitalized.plural() : item.label.capitalized)
+            Text(item.quantity.count < 1 ?
+                item.label.capitalized.plural() : item.label.capitalized)
 				.font(.title)
 				.minimumScaleFactor(0.5)
 				.lineLimit(2)
@@ -60,7 +61,7 @@ struct ListRowPreview: PreviewProvider {
 				ListRow(item: beans)
 				ListRow(item: detergent)
 			}
-			.previewLayout(.fixed(width: 300, height: 50))
+			.previewLayout(.fixed(width: 300, height: 75))
 
     }
 }

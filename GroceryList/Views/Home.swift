@@ -9,22 +9,39 @@
 import SwiftUI
 
 struct Home: View {
-	@State var newItem: String              = ""
+	@State var newItem: String              = "+ New Item"
 	@State var items: [Item]				= [Item]()
+    @State var searchIsActive: Bool         = false
 
     var body: some View {
 		NavigationView {
+            ZStack {
 			VStack {
-                TextField("New item", text: $newItem)
-					.padding(.horizontal)
+//                TextField("New item", text: $newItem)
+//					.padding(.horizontal)
+//                SearchBar(text: $newItem)
+                    
 				List {
 					ForEach(items) { item in
 						ListRow(item: item)
 					}
-				
-				}
+                }
+                Button(action:
+                    { self.searchIsActive = true },
+                       label:
+                    {
+                        ZStack {
+                            Color(.blue)
+                                .clipShape(Circle())
+                            Image(systemName: "plus")
+                                .foregroundColor(.white)
+                        }
+                            .frame(width: 50, height: 50)
+                    .padding()
+                }).sheet(isPresented: $searchIsActive) {
+                    SearchView(isPresented: self.$searchIsActive)
+                }
 			}
-		.navigationBarTitle("Title")
 		.navigationBarItems(
 			leading: Button(action: {
 				NewRelic.crashNow()
@@ -34,6 +51,7 @@ struct Home: View {
 				print("Sort Button Tapped") })
 				{ Image(systemName: "list.dash") })
 		}
+    }
     }
 }
 
