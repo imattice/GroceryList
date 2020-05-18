@@ -11,36 +11,35 @@ import SwiftUI
 struct SearchView: View {
     @Binding var isPresented: Bool
 
-    @State private var searchText: String = "app"
+    @State private var searchText: String = ""
     @State var results: [Item] = [
     Item(name: "banana", count: 3, variety: nil, aisle: .produce),
     Item(name: "apple", count: 4, variety: "gala", aisle: .produce),
     Item(name: "orange", count: 1, variety: nil, aisle: .produce),
     Item(name: "pineapple", count: 1, variety: "cubed", aisle: .produce),
     Item(name: "applesauce", count: 1, variety: "jar", aisle: .produce)]
-    
-//    @State var results: [String] = [ "banana", "apple", "orange", "pineapple", "applesauce"]
-    
+        
     var body: some View {
         NavigationView {
-        VStack {
-            SearchBar(text: $searchText)
-            List {
-                ForEach(results.filter { $0.name.contains(searchText) || searchText == "" }, id: \.self) { searchResult in
-                    Text(searchResult.name.capitalized)
+            VStack {
+                SearchBar(text: $searchText)
+                    .padding(.top)
+                List {
+                    ForEach(results.filter { $0.name.contains(searchText) || searchText == "" }, id: \.self) { searchResult in
+                        Text(searchResult.name.capitalized)
+                    }
                 }
+                .gesture(DragGesture().onChanged { _ in
+                    UIApplication.shared.endEditing(true)
+                })
             }
-            .gesture(DragGesture().onChanged { _ in
-                UIApplication.shared.endEditing(true)
-            })
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(
+                trailing: Button(
+                    action: { self.isPresented = false },
+                    label:  { Image(systemName: "xmark").foregroundColor(.blue).font(.largeTitle) }))
         }
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationBarItems(
-            trailing: Button(
-                action: { self.isPresented = false },
-                label:  { Image(systemName: "xmark").foregroundColor(.blue) }))
     }
-        }
 }
 
 struct SearchView_Previews: PreviewProvider {

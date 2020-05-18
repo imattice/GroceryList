@@ -17,31 +17,19 @@ struct Home: View {
 		NavigationView {
             ZStack {
 			VStack {
-//                TextField("New item", text: $newItem)
-//					.padding(.horizontal)
-//                SearchBar(text: $newItem)
-                    
+                ///Results List
 				List {
 					ForEach(items) { item in
 						ListRow(item: item)
 					}
                 }
-                Button(action:
-                    { self.searchIsActive = true },
-                       label:
-                    {
-                        ZStack {
-                            Color(.blue)
-                                .clipShape(Circle())
-                            Image(systemName: "plus")
-                                .foregroundColor(.white)
-                        }
-                            .frame(width: 50, height: 50)
-                    .padding()
-                }).sheet(isPresented: $searchIsActive) {
-                    SearchView(isPresented: self.$searchIsActive)
-                }
+                
+                ///Add Item Button
+                NewItemButton(searchIsActive: $searchIsActive)
 			}
+        
+        ///Navigation Options
+        .navigationBarTitle("", displayMode: .inline)
 		.navigationBarItems(
 			leading: Button(action: {
 				NewRelic.crashNow()
@@ -61,5 +49,29 @@ struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         Home(newItem: "",
 				 items: sampleList)
+    }
+}
+
+struct NewItemButton: View {
+    @Binding var searchIsActive: Bool
+    var color: UIColor  = .blue
+
+    var body: some View {
+        Button(action:
+            { self.searchIsActive = true },
+               label:
+            {
+                ZStack {
+                    Color(color)
+                        .clipShape(Circle())
+                    Image(systemName: "plus")
+                        .foregroundColor(.white)
+                }
+                .frame(width: 50, height: 50)
+                .padding()
+        })
+            .sheet(isPresented: $searchIsActive) {
+            SearchView(isPresented: self.$searchIsActive)
+        }
     }
 }

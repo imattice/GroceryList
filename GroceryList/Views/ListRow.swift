@@ -13,12 +13,12 @@ struct ListRow: View {
 
 	var body: some View {
 		HStack {
-		//Checkmark
+		///Checkmark
 			item.isChecked ?
 				Image(systemName: "checkmark") :
 				Image(systemName: "square")
 
-		//Quantity
+		///Quantity
 			VStack {
 				Text(String(item.quantity.count))
 					.font(.title)
@@ -32,7 +32,7 @@ struct ListRow: View {
 			}
 			.frame(width: 40, height: nil, alignment: .center)
 
-		//Label
+		///Label
             Text(item.quantity.count < 1 ?
                 item.label.capitalized.plural() : item.label.capitalized)
 				.font(.title)
