@@ -12,12 +12,14 @@ struct SearchView: View {
     @Binding var isPresented: Bool
 
     @State private var searchText: String = ""
-    @State var results: [Item] = [
-    Item(name: "banana", count: 3, variety: nil, aisle: .produce),
-    Item(name: "apple", count: 4, variety: "gala", aisle: .produce),
-    Item(name: "orange", count: 1, variety: nil, aisle: .produce),
-    Item(name: "pineapple", count: 1, variety: "cubed", aisle: .produce),
-    Item(name: "applesauce", count: 1, variety: "jar", aisle: .produce)]
+    @State var results: [ItemRecord] = { try! ItemRecord.all() }()
+        
+//        [
+//    Item(name: "banana", count: 3, variety: nil, aisle: .produce),
+//    Item(name: "apple", count: 4, variety: "gala", aisle: .produce),
+//    Item(name: "orange", count: 1, variety: nil, aisle: .produce),
+//    Item(name: "pineapple", count: 1, variety: "cubed", aisle: .produce),
+//    Item(name: "applesauce", count: 1, variety: "jar", aisle: .produce)]
         
     var body: some View {
         NavigationView {

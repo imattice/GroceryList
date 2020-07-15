@@ -1,32 +1,19 @@
-{
-    "allspice": {
-        "aisle": "spices",
-        "measurement": {
-            "default": "ounce",
-            "selection": [
-                "jar",
-                "ounces",
-                "teaspoon",
-                "tablespoon",
-                "gram"  ]},
-        "varieties": [
-            "whole",
-            "ground" ]},
-    
-    "almond butter": {
-        "aisle": "peanut butter and jam",
-        "measurement": {
-            "default": "jar",
-            "selection": [
-                "ounce"  ]}},
-            
-    "apple": {
-        "aisle": "produce",
-        "measurement": {
-            "default": "individual",
-            "selection": [
-            "pound"]},
-        "varieties": [
-            "gala",
-            "granny smith" ]},
-}
+[{
+    "name": "banana",
+    "aisle": "produce"
+}, {
+    "name": "apple",
+    "aisle": "produce"
+}, {
+    "name": "pineapple",
+    "aisle": "produce"
+}, {
+    "name": "orange",
+    "aisle": "produce"
+}, {
+    "name": "applesauce",
+    "aisle": "produce"
+}, {
+    "name": "milk",
+    "aisle": "dairy"
+}]

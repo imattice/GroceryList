@@ -8,24 +8,30 @@
 
 import Foundation
 
-struct ItemRecord {
+struct ItemRecord: Hashable {
 	var id: String 				= UUID().uuidString
 	let name: String
-	let varieties: [String]
+//	let varieties: [String]
 	let aisle: Aisle
 
 	init(name: String, varieties: [String], aisle: Aisle) {
 		self.name 		= name
-		self.varieties	= varieties
+//		self.varieties	= varieties
 		self.aisle		= aisle								}
 	init(name: String, aisle: Aisle) {
 		self.init(name: name, varieties: [String](), aisle: aisle)}
 	init(name: String) {
 		self.init(name: name, varieties: [String](), aisle: .other)
 	}
+//    init(from decoder: Decoder) throws {
+//
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        let name = try container.
+//
+//    }
     
-    func all() throws -> [ItemRecord] {
-        guard let url = Bundle.main.url(forResource: "race",
+    static func all() throws -> [ItemRecord] {
+        guard let url = Bundle.main.url(forResource: "items",
                                     withExtension: "json")
         else { print("resource not found");
             throw ParsingError.fileNotFound(filepath: Bundle.main.url(forResource: "race", withExtension: "json")!)}
@@ -33,6 +39,7 @@ struct ItemRecord {
         do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
+            
                 let jsonData = try decoder.decode([ItemRecord].self,
                                                   from: data)
                 return jsonData
@@ -48,10 +55,10 @@ extension ItemRecord: Codable {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
             let name = try container.decode(String.self, forKey: .name)
-            let varieties = try container.decode([String].self, forKey: .varieties)
+//            let varieties = try container.decode([String].self, forKey: .varieties)
             let aisle = try container.decode(Aisle.self, forKey: .aisle)
 
-            self.init(name: name, varieties: varieties, aisle: aisle)
+            self.init(name: name, aisle: aisle)
         } catch {
             print("Decoding error:\(error)")
             throw error
@@ -59,7 +66,7 @@ extension ItemRecord: Codable {
     }
     
     enum CodingKeys: CodingKey {
-        case name, varieties, aisle
+        case name, aisle
     }
 }
 
