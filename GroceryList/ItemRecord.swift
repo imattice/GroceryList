@@ -23,11 +23,47 @@ struct ItemRecord {
 	init(name: String) {
 		self.init(name: name, varieties: [String](), aisle: .other)
 	}
-
-	
+    
+    func all() throws -> [ItemRecord] {
+        guard let url = Bundle.main.url(forResource: "race",
+                                    withExtension: "json")
+        else { print("resource not found");
+            throw ParsingError.fileNotFound(filepath: Bundle.main.url(forResource: "race", withExtension: "json")!)}
+        
+        do {
+                let data = try Data(contentsOf: url)
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode([ItemRecord].self,
+                                                  from: data)
+                return jsonData
+            } catch {
+                print("error:\(error)")
+                throw error
+            }
+    }
 }
 
-enum Aisle: String {
+extension ItemRecord: Codable {
+    init(from decoder: Decoder) throws {
+        do {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let name = try container.decode(String.self, forKey: .name)
+            let varieties = try container.decode([String].self, forKey: .varieties)
+            let aisle = try container.decode(Aisle.self, forKey: .aisle)
+
+            self.init(name: name, varieties: varieties, aisle: aisle)
+        } catch {
+            print("Decoding error:\(error)")
+            throw error
+        }
+    }
+    
+    enum CodingKeys: CodingKey {
+        case name, varieties, aisle
+    }
+}
+
+enum Aisle: String, Codable {
 case
 	produce,
 	spices,

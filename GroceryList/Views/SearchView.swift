@@ -25,7 +25,9 @@ struct SearchView: View {
                 SearchBar(text: $searchText)
                     .padding(.top)
                 List {
-                    ForEach(results.filter { $0.name.contains(searchText) || searchText == "" }, id: \.self) { searchResult in
+                    ForEach(results
+                        .filter { $0.name.contains(searchText.lowercased()) || searchText == "" },
+                            id: \.self) { searchResult in
                         Text(searchResult.name.capitalized)
                     }
                 }

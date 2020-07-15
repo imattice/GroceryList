@@ -32,7 +32,8 @@ struct Home: View {
         .navigationBarTitle("", displayMode: .inline)
 		.navigationBarItems(
 			leading: Button(action: {
-				NewRelic.crashNow()
+                print("crashing")
+                NewRelic.crashNow()
 				print("Settings Button Tapped") })
 				{ Image(systemName: "gear") },
 			trailing: Button(action: {

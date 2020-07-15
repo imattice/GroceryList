@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum ParsingError: Error {
+    case fileNotFound(filepath: URL)
+}
+
+
 let itemData: [ItemRecord] = [
 	ItemRecord(name: "allspice", aisle: .spices),
 	ItemRecord(name: "almond butter"),
