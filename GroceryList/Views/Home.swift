@@ -10,8 +10,9 @@ import SwiftUI
 
 struct Home: View {
 	@State var newItem: String              = "+ New Item"
-	@State var items: [Item]				= [Item]()
+//	@State var items: [Item]				= [Item]()
     @State var searchIsActive: Bool         = false
+    @State var list: ItemList
 
     var body: some View {
 		NavigationView {
@@ -19,7 +20,7 @@ struct Home: View {
 			VStack {
                 ///Results List
 				List {
-					ForEach(items) { item in
+                    ForEach(list.items) { item in
 						ListRow(item: item)
 					}
                 }
@@ -49,7 +50,7 @@ struct Home: View {
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         Home(newItem: "",
-				 items: sampleList)
+             list: ItemList(items: sampleList))
     }
 }
 
