@@ -34,7 +34,7 @@ struct ListRow: View {
 
 		///Label
             Text(item.quantity.count < 1 ?
-                item.label.capitalized.plural() : item.label.capitalized)
+                item.label.capitalized /*.plural()*/ : item.label.capitalized)
 				.font(.title)
 				.minimumScaleFactor(0.5)
 				.lineLimit(2)

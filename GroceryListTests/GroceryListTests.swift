@@ -20,10 +20,10 @@ class ItemRecordTests: XCTestCase {
     }
 
     func testJSONDecoding() {
-        let allspice = ItemRecord()
-        let allItems = ItemRecord.all()
+        let banana = ItemRecord(name: "banana", aisle: .produce)
+        let allItems = try! ItemRecord.all()
         
-        XCTAssertEqual(allspice, allItems[0])
+        XCTAssertEqual(banana.name, allItems[0].name)
     }
 
     func testPerformanceExample() {

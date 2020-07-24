@@ -11,5 +11,7 @@ import Foundation
 struct ItemList {
     var items: [Item]
     
-
+    mutating func add(_ item: Item) {
+        items.append(item)
+    }
 }

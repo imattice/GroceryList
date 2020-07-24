@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Plurals
+//import Plurals
 
 struct Item: Identifiable, Hashable {
 	var id: String 		= UUID().uuidString
@@ -20,14 +20,14 @@ struct Item: Identifiable, Hashable {
 	///A tuple containing the total remaining count of the item as well as the pluralized measurement label
 	var quantity: (count: Int, measurement: String) {
 		if self.count > 1 {
-			return (count: count, measurement: measurement.plural())
+			return (count: count, measurement: measurement) //.plural())
 		}
 		return (count: count, measurement: measurement)
 	}
 	///A string containing both the variety and the name
 	var label: String {
 		var modifiedName: String {
-			if count > 1 { return name.plural() } else { return name } }
+			if count > 1 { return name /*.plural()*/ } else { return name } }
 		guard let variety = variety else { return modifiedName }
 		return "\(variety) \(modifiedName)"
 	}

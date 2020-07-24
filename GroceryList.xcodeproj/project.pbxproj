@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,10 +19,12 @@
 		811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D1A2362BCAA00ADD066 /* ListRow.swift */; };
 		816231B52473180400156DDE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 816231B42473180400156DDE /* items.json */; };
 		818C175924C8F99D00DB2719 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175824C8F99D00DB2719 /* ItemList.swift */; };
+		818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175B24C90B7400DB2719 /* ItemListTests.swift */; };
+		818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; };
+		818C176424CB5D4200DB2719 /* Pods_GroceryList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		81A8F1D0236FFDCE00EF3816 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1CF236FFDCE00EF3816 /* ItemData.swift */; };
 		81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */; };
 		81ADE0E72412F94C00934F0B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ADE0E62412F94C00934F0B /* SearchView.swift */; };
-		B7DFF2CD1CF8A3FEB706A96F /* libPods-GroceryList.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE9451E998DB9A3E15897AA /* libPods-GroceryList.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +44,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		818C176524CB5D4200DB2719 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				818C176424CB5D4200DB2719 /* Pods_GroceryList.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroceryList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BD844BF348294024BAFDA49 /* Pods-GroceryList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.release.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.release.xcconfig"; sourceTree = "<group>"; };
 		20ACFDAA455655372245AFE6 /* Pods-GroceryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroceryList.debug.xcconfig"; path = "Target Support Files/Pods-GroceryList/Pods-GroceryList.debug.xcconfig"; sourceTree = "<group>"; };
 		811C9CE52362A80800ADD066 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,11 +80,11 @@
 		811C9D1A2362BCAA00ADD066 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		816231B42473180400156DDE /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		818C175824C8F99D00DB2719 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
+		818C175B24C90B7400DB2719 /* ItemListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTests.swift; sourceTree = "<group>"; };
 		81A8F1CB236E4E8B00EF3816 /* GroceryList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroceryList-Bridging-Header.h"; sourceTree = "<group>"; };
 		81A8F1CF236FFDCE00EF3816 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRecord.swift; sourceTree = "<group>"; };
 		81ADE0E62412F94C00934F0B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		FFE9451E998DB9A3E15897AA /* libPods-GroceryList.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GroceryList.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7DFF2CD1CF8A3FEB706A96F /* libPods-GroceryList.a in Frameworks */,
+				818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				811C9CFF2362A80A00ADD066 /* GroceryListTests.swift */,
+				818C175B24C90B7400DB2719 /* ItemListTests.swift */,
 				811C9D012362A80A00ADD066 /* Info.plist */,
 			);
 			path = GroceryListTests;
@@ -202,7 +220,7 @@
 		F284AAC30B8326AC2876AB3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FFE9451E998DB9A3E15897AA /* libPods-GroceryList.a */,
+				0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -219,6 +237,7 @@
 				811C9CE22362A80800ADD066 /* Frameworks */,
 				811C9CE32362A80800ADD066 /* Resources */,
 				81A8F1CE236E4ECB00EF3816 /* New Relic dSYM Upload */,
+				818C176524CB5D4200DB2719 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */,
 				811C9D002362A80A00ADD066 /* GroceryListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
