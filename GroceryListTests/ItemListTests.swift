@@ -14,8 +14,12 @@ import XCTest
 class ItemListTests: XCTestCase {
 
     func testAddItem() throws {
-//        let list = ItemList()
-        print("works!")
+        var list = ItemList(items: [Item]())
+        let item = Item(name: "Sample", count: 1, variety: nil, aisle: .produce)
+        
+        list.add(item)
+        
+        XCTAssertTrue(list.items.contains { $0.name == "Sample" })
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
