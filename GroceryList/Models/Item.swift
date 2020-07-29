@@ -51,6 +51,7 @@ struct Item: Identifiable, Hashable {
 	func toggleCheck() {
 		isChecked = !isChecked
 	}
+    
 }
 
 

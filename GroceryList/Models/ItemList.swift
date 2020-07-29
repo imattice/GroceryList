@@ -14,4 +14,13 @@ struct ItemList {
     mutating func add(_ item: Item) {
         items.append(item)
     }
+    
+    init() {
+        self.items = [Item]()
+    }
+    
+    init(items: [Item]) {
+        self.items = items
+    }
+    
 }

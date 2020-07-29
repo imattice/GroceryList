@@ -10,16 +10,10 @@ import SwiftUI
 
 struct SearchView: View {
     @Binding var isPresented: Bool
+    @Binding var list: ItemList
 
     @State private var searchText: String = ""
     @State var results: [ItemRecord] = { try! ItemRecord.all() }()
-        
-//        [
-//    Item(name: "banana", count: 3, variety: nil, aisle: .produce),
-//    Item(name: "apple", count: 4, variety: "gala", aisle: .produce),
-//    Item(name: "orange", count: 1, variety: nil, aisle: .produce),
-//    Item(name: "pineapple", count: 1, variety: "cubed", aisle: .produce),
-//    Item(name: "applesauce", count: 1, variety: "jar", aisle: .produce)]
         
     var body: some View {
         NavigationView {
@@ -30,7 +24,14 @@ struct SearchView: View {
                     ForEach(results
                         .filter { $0.name.contains(searchText.lowercased()) || searchText == "" },
                             id: \.self) { searchResult in
-                        Text(searchResult.name.capitalized)
+                                Button(
+                                    action: {
+                                        let resultItem = Item(name: searchResult.name, count: 1, variety: nil, aisle: searchResult.aisle)
+                                        self.list.add(resultItem)
+                                },
+                                    label: {
+                                        Text(searchResult.name.capitalized)
+                                })
                     }
                 }
                 .gesture(DragGesture().onChanged { _ in
@@ -47,8 +48,9 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
+    @State static var previewList = ItemList(items: sampleList)
     static var previews: some View {
-        SearchView(isPresented: .constant(true))
+        SearchView(isPresented: .constant(true), list: $previewList)
     }
 }
 

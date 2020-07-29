@@ -26,7 +26,8 @@ struct Home: View {
                 }
                 
                 ///Add Item Button
-                NewItemButton(searchIsActive: $searchIsActive)
+                NewItemButton(searchIsActive: $searchIsActive,
+                              listToAdd: $list)
 			}
         
         ///Navigation Options
@@ -43,6 +44,33 @@ struct Home: View {
 		}
     }
     }
+    
+    struct NewItemButton: View {
+        @Binding var searchIsActive: Bool
+        @Binding var listToAdd: ItemList
+        var color: UIColor  = .blue
+
+        var body: some View {
+            Button(action:
+                { self.searchIsActive = true },
+                   label:
+                {
+                    ZStack {
+                        Color(color)
+                            .clipShape(Circle())
+                        Image(systemName: "plus")
+                            .foregroundColor(.white)
+                    }
+                    .frame(width: 50, height: 50)
+                    .padding()
+            })
+                .sheet(isPresented: $searchIsActive) {
+                    SearchView(isPresented: self.$searchIsActive,
+                               list: self.$listToAdd )
+            }
+        }
+    }
+
 }
 
 
@@ -54,26 +82,3 @@ struct ItemList_Previews: PreviewProvider {
     }
 }
 
-struct NewItemButton: View {
-    @Binding var searchIsActive: Bool
-    var color: UIColor  = .blue
-
-    var body: some View {
-        Button(action:
-            { self.searchIsActive = true },
-               label:
-            {
-                ZStack {
-                    Color(color)
-                        .clipShape(Circle())
-                    Image(systemName: "plus")
-                        .foregroundColor(.white)
-                }
-                .frame(width: 50, height: 50)
-                .padding()
-        })
-            .sheet(isPresented: $searchIsActive) {
-            SearchView(isPresented: self.$searchIsActive)
-        }
-    }
-}
