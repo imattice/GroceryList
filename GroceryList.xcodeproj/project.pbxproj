@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,7 @@
 		818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175B24C90B7400DB2719 /* ItemListTests.swift */; };
 		818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; };
 		818C176424CB5D4200DB2719 /* Pods_GroceryList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		818C176824D476DB00DB2719 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */; };
 		81A8F1D0236FFDCE00EF3816 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1CF236FFDCE00EF3816 /* ItemData.swift */; };
 		81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */; };
 		81ADE0E72412F94C00934F0B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ADE0E62412F94C00934F0B /* SearchView.swift */; };
@@ -81,6 +82,7 @@
 		816231B42473180400156DDE /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		818C175824C8F99D00DB2719 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		818C175B24C90B7400DB2719 /* ItemListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTests.swift; sourceTree = "<group>"; };
+		818C176724D476DB00DB2719 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		81A8F1CB236E4E8B00EF3816 /* GroceryList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroceryList-Bridging-Header.h"; sourceTree = "<group>"; };
 		81A8F1CF236FFDCE00EF3816 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRecord.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		816231B12473153400156DDE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */,
 				816231B42473180400156DDE /* items.json */,
 			);
 			path = Data;
@@ -406,6 +409,7 @@
 			files = (
 				81A8F1D0236FFDCE00EF3816 /* ItemData.swift in Sources */,
 				81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */,
+				818C176824D476DB00DB2719 /* CoreData.xcdatamodeld in Sources */,
 				811C9D192362B93900ADD066 /* Item.swift in Sources */,
 				811C9CE92362A80800ADD066 /* AppDelegate.swift in Sources */,
 				811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */,
@@ -753,6 +757,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				818C176724D476DB00DB2719 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 818C176724D476DB00DB2719 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 811C9CDD2362A80800ADD066 /* Project object */;
 }

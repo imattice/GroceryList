@@ -9,6 +9,7 @@
 import Foundation
 
 struct ItemList {
+    let id: String = UUID().uuidString
     var items: [Item]
     
     mutating func add(_ item: Item) {
