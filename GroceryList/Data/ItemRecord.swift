@@ -72,7 +72,7 @@ extension ItemRecord: Codable {
     }
 }
 
-enum Aisle: String, Codable {
+enum Aisle: String, Codable, NSCodable {
 case
 	produce,
 	spices,
