@@ -22,15 +22,21 @@ struct SearchView: View {
                     .padding(.top)
                 List {
                     ForEach(results
-                        .filter { $0.name.contains(searchText.lowercased()) || searchText == "" },
+                        
+                        //POSSIBLE CRASH: Force Unwrapping the name here might cause a crash.  Check here if filter view is crashing
+                        .filter { $0.name!.contains(searchText.lowercased()) || searchText == "" },
                             id: \.self) { searchResult in
                                 Button(
                                     action: {
-                                        let resultItem = Item(name: searchResult.name, count: 1, variety: nil, aisle: searchResult.aisle)
+                                        let resultName = searchResult.name ?? "Unnamed Item"
+                                        let resultAisle = Aisle(rawValue: searchResult.aisle!)!
+                                        let resultItem = Item(name: resultName, count: 1, variety: nil,
+                                                              aisle: resultAisle)
                                         self.list.add(resultItem)
                                 },
                                     label: {
-                                        Text(searchResult.name.capitalized)
+                                        //POSSIBLE CRASH: See Force Unwrapping note above
+                                        Text(searchResult.name!.capitalized)
                                 })
                     }
                 }

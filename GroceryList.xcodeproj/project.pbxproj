@@ -18,6 +18,7 @@
 		811C9D192362B93900ADD066 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D182362B93900ADD066 /* Item.swift */; };
 		811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C9D1A2362BCAA00ADD066 /* ListRow.swift */; };
 		816231B52473180400156DDE /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 816231B42473180400156DDE /* items.json */; };
+		81825C4C24E60971002CE871 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81825C4B24E60971002CE871 /* CoreDataStack.swift */; };
 		818C175924C8F99D00DB2719 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175824C8F99D00DB2719 /* ItemList.swift */; };
 		818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175B24C90B7400DB2719 /* ItemListTests.swift */; };
 		818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; };
@@ -80,6 +81,7 @@
 		811C9D182362B93900ADD066 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		811C9D1A2362BCAA00ADD066 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		816231B42473180400156DDE /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
+		81825C4B24E60971002CE871 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		818C175824C8F99D00DB2719 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		818C175B24C90B7400DB2719 /* ItemListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTests.swift; sourceTree = "<group>"; };
 		818C176724D476DB00DB2719 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		816231B12473153400156DDE /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				81825C4B24E60971002CE871 /* CoreDataStack.swift */,
 				81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */,
 				818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */,
 				816231B42473180400156DDE /* items.json */,
@@ -413,6 +416,7 @@
 				811C9D192362B93900ADD066 /* Item.swift in Sources */,
 				811C9CE92362A80800ADD066 /* AppDelegate.swift in Sources */,
 				811C9D1B2362BCAA00ADD066 /* ListRow.swift in Sources */,
+				81825C4C24E60971002CE871 /* CoreDataStack.swift in Sources */,
 				811C9CEB2362A80800ADD066 /* SceneDelegate.swift in Sources */,
 				81ADE0E72412F94C00934F0B /* SearchView.swift in Sources */,
 				811C9CED2362A80800ADD066 /* Home.swift in Sources */,

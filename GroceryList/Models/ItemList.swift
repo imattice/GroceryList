@@ -23,5 +23,4 @@ struct ItemList {
     init(items: [Item]) {
         self.items = items
     }
-    
 }
