@@ -7,69 +7,73 @@
 //
 
 import Foundation
+import CoreData
 
 extension ItemRecord {
-//	var id: String 				= UUID().uuidString
-//	let name: String
-////	let varieties: [String]
-//	let aisle: Aisle
-
-//    convenience init(name: String, varieties: [String], aisle: Aisle) {
-//		self.name 		= name
-////		self.varieties	= varieties
-//        self.aisle		= aisle.rawValue								}
-//    convenience init(name: String, aisle: Aisle) {
-//		self.init(name: name, varieties: [String](), aisle: aisle)}
-//    convenience init(name: String) {
-//		self.init(name: name, varieties: [String](), aisle: .other)
-//	}
-//    init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        let name = try container.
-//
-//    }
     
     static func all() throws -> [ItemRecord] {
-//        guard let url = Bundle.main.url(forResource: "items",
-//                                    withExtension: "json")
-//        else { print("resource not found");
-//            throw ParsingError.fileNotFound(filepath: Bundle.main.url(forResource: "race", withExtension: "json")!)}
-//
-//        do {
-//                let data = try Data(contentsOf: url)
-//                let decoder = JSONDecoder()
-//
-//                let jsonData = try decoder.decode([ItemRecord].self,
-//                                                  from: data)
-//                return jsonData
-//            } catch {
-//                print("error:\(error)")
-//                throw error
-//            }
         return [ItemRecord]()
     }
 }
 
-//extension ItemRecord: Codable {
-//    convenience public init(from decoder: Decoder) throws {
-//        do {
-//            let container = try decoder.container(keyedBy: CodingKeys.self)
-//            let name = try container.decode(String.self, forKey: .name)
-////            let varieties = try container.decode([String].self, forKey: .varieties)
-//            let aisle = try container.decode(Aisle.self, forKey: .aisle)
-//
-//            self.init(name: name, aisle: aisle)
-//        } catch {
-//            print("Decoding error:\(error)")
-//            throw error
-//        }
-//    }
-//
-//    enum CodingKeys: CodingKey {
-//        case name, aisle
-//    }
-//}
+extension ItemRecord {
+    // MARK: - Load JSON data to Core Data
+    static
+    func loadJSONItemDataIfNeeded() throws {
+        //create a fetch request to see if there are any existing entries
+        let coreDataStack = CoreDataStack(modelName: .Records)
+        let fetchRequest = NSFetchRequest<ItemRecord>(entityName: "ItemRecord")
+        let count = try! coreDataStack.managedContext.count(for: fetchRequest)
+        
+        //check if core data is empty.  If so, we don't need to load the JSON data
+        guard count == 0 else { print("data is present"); return }
+
+         do {
+            //load the JSON data into Core Data
+            try loadJSONItemData()
+         } catch let error as NSError {
+           print("Error fetching: \(error), \(error.userInfo)")
+         }
+    }
+
+    private static
+    func loadJSONItemData() throws {
+        //grab the url for the json file
+        guard let url = Bundle.main.url(forResource: "items",
+                                    withExtension: "json")
+        else { print("resource not found");
+            throw ParsingError.fileNotFound(filepath: Bundle.main.url(forResource: "items", withExtension: "json")!)}
+        //get the data stack where the Records will be saved
+        let coreDataStack = CoreDataStack(modelName: .Records)
+
+        do {
+            //transform the json into data and serialize it into an array of dictionaries
+            let data = try Data(contentsOf: url)
+            guard let jsonArray = try JSONSerialization.jsonObject(with: data) as? [[String : Any]] else { return }
+            
+            //for each item in the data, map that entry to a property in a new ItemRecord. Return all the records in an array.
+            let _: [ItemRecord] = jsonArray.compactMap {
+                guard let name = $0["name"] as? String,
+                    let aisle = $0["aisle"] as? String
+                    else { return nil }
+                //create the ItemRecord in the CoreData context
+                let record = ItemRecord(context: coreDataStack.managedContext)
+                record.name = name
+                record.aisle = aisle
+                record.id = UUID().uuidString
+
+                return record
+            }
+            
+            //save the context which now holds all of the ItemRecord entries
+            coreDataStack.saveContext()
+            
+            } catch {
+                print("error:\(error)")
+                throw error
+            }
+    }
+}
 
 enum Aisle: String, Codable {
 case
