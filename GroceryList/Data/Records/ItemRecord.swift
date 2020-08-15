@@ -75,25 +75,3 @@ extension ItemRecord {
     }
 }
 
-enum Aisle: String, Codable {
-case
-	produce,
-	spices,
-	peanutButterAndJam,
-	condiments,
-	canned,
-	meat,
-	bread,
-	dairy,
-	specialtyCheese,
-	wine,
-	frozen,
-	baking,
-	pasta,
-	oilAndVinegar,
-	snacksAndDrinks,
-	other,
-	bulk,
-	cleaningSupplies
-}
-
