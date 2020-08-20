@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct Home: View {
+    @Environment(\.managedObjectContext) var recordContext
+
 	@State var newItem: String              = "+ New Item"
 //	@State var items: [Item]				= [Item]()
     @State var searchIsActive: Bool         = false
     @State var list: ItemList
+    
 
     var body: some View {
 		NavigationView {
@@ -28,6 +31,8 @@ struct Home: View {
                 ///Add Item Button
                 NewItemButton(searchIsActive: $searchIsActive,
                               listToAdd: $list)
+                    .environment(\.managedObjectContext, self.recordContext)
+
 			}
         
         ///Navigation Options
@@ -46,6 +51,8 @@ struct Home: View {
     }
     
     struct NewItemButton: View {
+        @Environment(\.managedObjectContext) var recordContext
+
         @Binding var searchIsActive: Bool
         @Binding var listToAdd: ItemList
         var color: UIColor  = .blue
@@ -67,6 +74,7 @@ struct Home: View {
                 .sheet(isPresented: $searchIsActive) {
                     SearchView(isPresented: self.$searchIsActive,
                                list: self.$listToAdd )
+                        .environment(\.managedObjectContext, self.recordContext)
             }
         }
     }

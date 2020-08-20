@@ -9,11 +9,35 @@
 import Foundation
 import CoreData
 
-extension ItemRecord {
+extension ItemRecord: Identifiable {
     
-    static func all() throws -> [ItemRecord] {
-        return [ItemRecord]()
-    }
+//    static func all() throws -> [ItemRecord] {
+//        let request = NSFetchRequest<ItemRecord>(entityName: "ItemRecord")
+//        let context = CoreDataStack(modelName: .Records).managedContext
+//        let allRecords = try context.fetch(request)
+//
+//        return allRecords
+//    }
+//
+//    static func search(_ searchString: String) throws -> [ItemRecord] {
+//        let predicate = NSPredicate(format: "%K == %@", #keyPath(ItemRecord.name), searchString.lowercased())
+//        let request = NSFetchRequest<ItemRecord>(entityName: "ItemRecord")
+////        request.resultType = .managedObjectResultType
+////        request.predicate = predicate
+//        
+//        var searchResult: [ItemRecord] = [ItemRecord]()
+//        
+//        do {
+//            let fetchResult = try CoreDataStack(modelName: .Records).managedContext.fetch(request)
+//            print(searchResult.last?.name)
+//            
+//            searchResult = fetchResult
+//        } catch {
+//            print(error)
+//        }
+//        
+//        return searchResult
+//    }
 }
 
 extension ItemRecord {

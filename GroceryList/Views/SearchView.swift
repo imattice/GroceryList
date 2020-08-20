@@ -9,11 +9,18 @@
 import SwiftUI
 
 struct SearchView: View {
+    @Environment(\.managedObjectContext) var recordContext
+
     @Binding var isPresented: Bool
     @Binding var list: ItemList
 
     @State private var searchText: String = ""
-    @State var results: [ItemRecord] = { try! ItemRecord.all() }()
+    @FetchRequest(entity: ItemRecord.entity(), sortDescriptors: [])
+//    @FetchRequest(entity: ItemRecord.entity(),
+//                  sortDescriptors: [],
+//                  predicate: NSPredicate(format: "%K == %@", #keyPath(ItemRecord.name), "apple"))
+//    var results: [ItemRecord] = { try! ItemRecord.search(searchText) }()
+    var results: FetchedResults<ItemRecord>
         
     var body: some View {
         NavigationView {
@@ -21,11 +28,12 @@ struct SearchView: View {
                 SearchBar(text: $searchText)
                     .padding(.top)
                 List {
-                    ForEach(results
-                        
-                        //POSSIBLE CRASH: Force Unwrapping the name here might cause a crash.  Check here if filter view is crashing
-                        .filter { $0.name!.contains(searchText.lowercased()) || searchText == "" },
-                            id: \.self) { searchResult in
+                    //POSSIBLE CRASH: Force Unwrapping the name here might cause a crash.  Check here if filter view is crashing
+                    //Filter is not needed if we only return matched results
+                    //                        .filter { $0.name!.contains(searchText.lowercased()) || searchText == "" },
+                    //                            id: \.self
+
+                    ForEach(results) { searchResult in
                                 Button(
                                     action: {
                                         let resultName = searchResult.name ?? "Unnamed Item"
