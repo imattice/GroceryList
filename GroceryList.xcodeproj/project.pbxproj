@@ -25,7 +25,7 @@
 		818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175B24C90B7400DB2719 /* ItemListTests.swift */; };
 		818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; };
 		818C176424CB5D4200DB2719 /* Pods_GroceryList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		818C176824D476DB00DB2719 /* Records.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 818C176624D476DB00DB2719 /* Records.xcdatamodeld */; };
+		818C176824D476DB00DB2719 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */; };
 		81A8F1D0236FFDCE00EF3816 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1CF236FFDCE00EF3816 /* SampleData.swift */; };
 		81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8F1D1236FFE0400EF3816 /* ItemRecord.swift */; };
 		81ADE0E72412F94C00934F0B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81ADE0E62412F94C00934F0B /* SearchView.swift */; };
@@ -220,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				81825C4B24E60971002CE871 /* CoreDataStack.swift */,
-				818C176624D476DB00DB2719 /* Records.xcdatamodeld */,
+				818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -458,7 +458,7 @@
 			files = (
 				81A8F1D0236FFDCE00EF3816 /* SampleData.swift in Sources */,
 				81A8F1D2236FFE0400EF3816 /* ItemRecord.swift in Sources */,
-				818C176824D476DB00DB2719 /* Records.xcdatamodeld in Sources */,
+				818C176824D476DB00DB2719 /* CoreData.xcdatamodeld in Sources */,
 				811C9D192362B93900ADD066 /* Item.swift in Sources */,
 				81825C4E24E7664B002CE871 /* Errors.swift in Sources */,
 				811C9CE92362A80800ADD066 /* AppDelegate.swift in Sources */,
@@ -811,13 +811,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		818C176624D476DB00DB2719 /* Records.xcdatamodeld */ = {
+		818C176624D476DB00DB2719 /* CoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				818C176724D476DB00DB2719 /* CoreData.xcdatamodel */,
 			);
 			currentVersion = 818C176724D476DB00DB2719 /* CoreData.xcdatamodel */;
-			path = Records.xcdatamodeld;
+			path = CoreData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

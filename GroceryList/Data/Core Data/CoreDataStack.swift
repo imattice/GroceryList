@@ -11,17 +11,8 @@ import CoreData
 
 class CoreDataStack {
     ///The name of the core data model file that contains the entities
-    private let modelName: String
-    ///An enum used to point to the core data model files
-    enum DataStore: String {
-        case Records, ListData
-    }
-    
-    ///Create a reference to the data store
-    init(modelName: DataStore) {
-        self.modelName = modelName.rawValue
-    }
-    
+    private let modelName: String = "CoreData"
+        
     lazy
     var managedContext: NSManagedObjectContext = {
         return self.storeContainer.viewContext          }()

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         // Create the context used to access CoreData
-        let appContext = CoreDataStack(modelName: .Records).managedContext
+        let appContext = CoreDataStack().managedContext
 
         // load the item record data from JSON into core data
         try! ItemRecord.loadJSONItemDataIfNeeded(to: appContext)
