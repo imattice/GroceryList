@@ -42,33 +42,29 @@ extension ItemRecord: Identifiable {
 
 extension ItemRecord {
     // MARK: - Load JSON data to Core Data
-    static
-    func loadJSONItemDataIfNeeded() throws {
+    static func loadJSONItemDataIfNeeded(to context: NSManagedObjectContext) throws {
         //create a fetch request to see if there are any existing entries
-        let coreDataStack = CoreDataStack(modelName: .Records)
         let fetchRequest = NSFetchRequest<ItemRecord>(entityName: "ItemRecord")
-        let count = try! coreDataStack.managedContext.count(for: fetchRequest)
+        let count = try! context.count(for: fetchRequest)
         
         //check if core data is empty.  If so, we don't need to load the JSON data
         guard count == 0 else { print("data is present"); return }
 
          do {
             //load the JSON data into Core Data
-            try loadJSONItemData()
+            try loadJSONItemData(to: context)
          } catch let error as NSError {
            print("Error fetching: \(error), \(error.userInfo)")
          }
     }
 
     private static
-    func loadJSONItemData() throws {
+        func loadJSONItemData(to context: NSManagedObjectContext) throws {
         //grab the url for the json file
         guard let url = Bundle.main.url(forResource: "items",
                                     withExtension: "json")
         else { print("resource not found");
             throw ParsingError.fileNotFound(filepath: Bundle.main.url(forResource: "items", withExtension: "json")!)}
-        //get the data stack where the Records will be saved
-        let coreDataStack = CoreDataStack(modelName: .Records)
 
         do {
             //transform the json into data and serialize it into an array of dictionaries
@@ -81,7 +77,7 @@ extension ItemRecord {
                     let aisle = $0["aisle"] as? String
                     else { return nil }
                 //create the ItemRecord in the CoreData context
-                let record = ItemRecord(context: coreDataStack.managedContext)
+                let record = ItemRecord(context: context)
                 record.name = name
                 record.aisle = aisle
                 record.id = UUID().uuidString
@@ -90,7 +86,7 @@ extension ItemRecord {
             }
             
             //save the context which now holds all of the ItemRecord entries
-            coreDataStack.saveContext()
+            try context.save()
             
             } catch {
                 print("error:\(error)")

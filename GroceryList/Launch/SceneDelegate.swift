@@ -18,15 +18,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        // load the item record data from JSON into core data
-        try! ItemRecord.loadJSONItemDataIfNeeded()
-        
         // Create the context used to access CoreData
-        let recordContext = CoreDataStack(modelName: .Records).managedContext
+        let appContext = CoreDataStack(modelName: .Records).managedContext
 
+        // load the item record data from JSON into core data
+        try! ItemRecord.loadJSONItemDataIfNeeded(to: appContext)
+        
         // Create the SwiftUI view that provides the window contents.
         let contentView = Home(list: ItemList(items: sampleList))
-            .environment(\.managedObjectContext, recordContext)
+            .environment(\.managedObjectContext, appContext)
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
