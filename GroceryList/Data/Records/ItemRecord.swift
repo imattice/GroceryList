@@ -80,7 +80,7 @@ extension ItemRecord {
                 let record = ItemRecord(context: context)
                 record.name = name
                 record.aisle = aisle
-                record.id = UUID().uuidString
+                record.id = UUID()
 
                 return record
             }

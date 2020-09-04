@@ -8,19 +8,19 @@
 
 import Foundation
 
-struct ItemList {
-    let id: String = UUID().uuidString
-    var items: [Item]
-    
-    mutating func add(_ item: Item) {
-        items.append(item)
-    }
-    
-    init() {
-        self.items = [Item]()
-    }
-    
-    init(items: [Item]) {
-        self.items = items
-    }
-}
+//struct ItemList {
+//    let id: String = UUID().uuidString
+//    var items: [Item]
+//    
+//    mutating func add(_ item: Item) {
+//        items.append(item)
+//    }
+//    
+//    init() {
+//        self.items = [Item]()
+//    }
+//    
+//    init(items: [Item]) {
+//        self.items = items
+//    }
+//}

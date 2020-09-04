@@ -62,7 +62,7 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
-    @State static var previewList = ItemList(items: sampleList)
+    @State static var previewList = ItemList()
     static var previews: some View {
         SearchView(isPresented: .constant(true), list: $previewList)
     }

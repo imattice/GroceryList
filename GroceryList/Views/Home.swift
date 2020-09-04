@@ -10,11 +10,12 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var recordContext
+//    @FetchRequest(
 
 	@State var newItem: String              = "+ New Item"
 //	@State var items: [Item]				= [Item]()
     @State var searchIsActive: Bool         = false
-    @State var list: ItemList
+//    @State var list: ItemList
     
 
     var body: some View {
@@ -22,11 +23,11 @@ struct Home: View {
             ZStack {
 			VStack {
                 ///Results List
-				List {
-                    ForEach(list.items) { item in
-						ListRow(item: item)
-					}
-                }
+//				List {
+//                    ForEach(list.items) { item in
+//						ListRow(item: item)
+//					}
+//                }
                 
                 ///Add Item Button
                 NewItemButton(searchIsActive: $searchIsActive,
@@ -86,7 +87,7 @@ struct Home: View {
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
         Home(newItem: "",
-             list: ItemList(items: sampleList))
+             list: ItemList())
     }
 }
 
