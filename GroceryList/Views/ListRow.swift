@@ -20,7 +20,8 @@ struct ListRow: View {
 
 		///Quantity
 			VStack {
-				Text(String(item.quantity.count))
+                
+                Text(String(item.quantity.count))
 					.font(.title)
 				if item.quantity.measurement != "individual" && item.quantity.measurement != "individuals" {
 				Text(String(item.quantity.measurement))
@@ -50,11 +51,18 @@ struct ListRow: View {
 
 struct ListRowPreview: PreviewProvider {
     static var previews: some View {
-		let bread = sampleList[0]
-		let apple = sampleList[1]
-		let beans = sampleList[2]
-		let detergent = sampleList[13]
-
+        let bread = Item()
+        bread.name = "bread"
+        
+        let apple = Item()
+        apple.name  = "apple"
+        
+        let beans = Item()
+        beans.name = "bean"
+        
+        let detergent = Item()
+        detergent.name = "detergent"
+        
 		return Group {
 				ListRow(item: bread)
 				ListRow(item: apple)

@@ -30,8 +30,7 @@ struct Home: View {
 //                }
                 
                 ///Add Item Button
-                NewItemButton(searchIsActive: $searchIsActive,
-                              listToAdd: $list)
+                NewItemButton(searchIsActive: $searchIsActive)
                     .environment(\.managedObjectContext, self.recordContext)
 
 			}
@@ -55,7 +54,7 @@ struct Home: View {
         @Environment(\.managedObjectContext) var recordContext
 
         @Binding var searchIsActive: Bool
-        @Binding var listToAdd: ItemList
+//        @Binding var listToAdd: ItemList
         var color: UIColor  = .blue
 
         var body: some View {
@@ -73,8 +72,7 @@ struct Home: View {
                     .padding()
             })
                 .sheet(isPresented: $searchIsActive) {
-                    SearchView(isPresented: self.$searchIsActive,
-                               list: self.$listToAdd )
+                    SearchView(isPresented: self.$searchIsActive)
                         .environment(\.managedObjectContext, self.recordContext)
             }
         }
@@ -86,8 +84,7 @@ struct Home: View {
 
 struct ItemList_Previews: PreviewProvider {
     static var previews: some View {
-        Home(newItem: "",
-             list: ItemList())
+        Home(newItem: "")
     }
 }
 

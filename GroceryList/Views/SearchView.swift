@@ -12,7 +12,7 @@ struct SearchView: View {
     @Environment(\.managedObjectContext) var recordContext
 
     @Binding var isPresented: Bool
-    @Binding var list: ItemList
+//    @Binding var list: ItemList
 
     @State private var searchText: String = ""
     @FetchRequest(entity: ItemRecord.entity(), sortDescriptors: [])
@@ -28,23 +28,18 @@ struct SearchView: View {
                 SearchBar(text: $searchText)
                     .padding(.top)
                 List {
-                    //POSSIBLE CRASH: Force Unwrapping the name here might cause a crash.  Check here if filter view is crashing
-                    //Filter is not needed if we only return matched results
-                    //                        .filter { $0.name!.contains(searchText.lowercased()) || searchText == "" },
-                    //                            id: \.self
-
                     ForEach(results) { searchResult in
                                 Button(
                                     action: {
-                                        let resultName = searchResult.name ?? "Unnamed Item"
-                                        let resultAisle = Aisle(rawValue: searchResult.aisle!)!
-                                        let resultItem = Item(name: resultName, count: 1, variety: nil,
-                                                              aisle: resultAisle)
-                                        self.list.add(resultItem)
+                                        let resultItem = Item()
+                                        resultItem.name = searchResult.name ?? "Unnamed Item"
+                                        resultItem.count = 1
+                                        resultItem.aisle = searchResult.aisle
+
+                                        resultItem.save()
                                 },
                                     label: {
-                                        //POSSIBLE CRASH: See Force Unwrapping note above
-                                        Text(searchResult.name!.capitalized)
+                                        Text(searchResult.name?.capitalized ?? "Unnamed Item")
                                 })
                     }
                 }
@@ -62,9 +57,9 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
-    @State static var previewList = ItemList()
+//    @State static var previewList = ItemList()
     static var previews: some View {
-        SearchView(isPresented: .constant(true), list: $previewList)
+        SearchView(isPresented: .constant(true))
     }
 }
 

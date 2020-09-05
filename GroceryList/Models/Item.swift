@@ -8,36 +8,38 @@
 
 import Foundation
 import CoreData
+import UIKit
 //import Plurals
 
-extension Item: Identifiable, Hashable {
+extension Item: Identifiable {
 //	var variety: String?
 
 	///A tuple containing the total remaining count of the item as well as the pluralized measurement label
-	var quantity: (count: Int16, measurement: String)? {
-        guard let measurement = measurement else { return nil }
-        
+	var quantity: (count: Int, measurement: String) {
 		if self.count > 1 {
-			return (count: count, measurement: measurement) //.plural())
+			return (count: Int(count), measurement: measurement ?? "") //.plural())
 		}
-		return (count: count, measurement: measurement)
+		return (count: Int(count), measurement: measurement ?? "")
 	}
 	///A string containing both the variety and the name
-//	var label: String {
+	var label: String {
 //		var modifiedName: String {
 //			if count > 1 { return name /*.plural()*/ } else { return name } }
 //		guard let variety = variety else { return modifiedName }
 //		return "\(variety) \(modifiedName)"
-//	}
-//
+        
+        return name!
+	}
+
 
     fileprivate
 	convenience init(name: String, quantity: (count: Int, measurement: String), variety: String?, aisle: Aisle, isChecked: Bool = false) {
+        self.init()
 		self.name 			= name
 //		self.variety		= variety
         self.aisle			= aisle.rawValue
 		self.isChecked		= isChecked
-		self.count 			= Int16(quantity.count)
+		self.count 			= Int32(quantity.count)
 		self.measurement	= quantity.measurement
         
 //        let item = Item(context: context)
@@ -58,6 +60,18 @@ extension Item: Identifiable, Hashable {
 	func toggleCheck() {
 		isChecked = !isChecked
 	}
+    
+    func save() {
+        guard let appContext = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.managedContext else {
+            print("could not access app context during item save operation"); return }
+        
+        appContext.insert(self)
+        do {
+            try appContext.save()
+        } catch {
+            print("failed to save to context")
+        }
+    }
     
     static func loadSampleItems(to context: NSManagedObjectContext) {
         let sampleList: [Item] = [
@@ -86,20 +100,10 @@ extension Item: Identifiable, Hashable {
         do{
             try context.save()
         } catch {
-            print("unable to save items")
+            print("unable to save sample items")
         }
         
         
     }
     
 }
-
-
-
-//enum State {
-//case
-//	fresh,
-//	frozen,
-//	canned,
-//	dried
-//}

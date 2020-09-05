@@ -2,11 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="aisle" optional="YES" attributeType="String"/>
-        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isChecked" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="measurement" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
     </entity>
     <entity name="ItemRecord" representedClassName="ItemRecord" syncable="YES" codeGenerationType="class">
         <attribute name="aisle" optional="YES" attributeType="String"/>
@@ -14,7 +14,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ItemRecord" positionX="-27" positionY="18" width="128" height="88"/>
         <element name="Item" positionX="0" positionY="72" width="128" height="133"/>
+        <element name="ItemRecord" positionX="-27" positionY="18" width="128" height="88"/>
     </elements>
 </model>
