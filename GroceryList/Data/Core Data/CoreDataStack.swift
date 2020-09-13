@@ -16,7 +16,7 @@ class CoreDataStack {
     lazy
     var managedContext: NSManagedObjectContext = {
         return self.storeContainer.viewContext          }()
-
+    
     private lazy
     var storeContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: self.modelName)

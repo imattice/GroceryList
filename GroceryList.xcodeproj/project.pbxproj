@@ -21,7 +21,6 @@
 		81825C4C24E60971002CE871 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81825C4B24E60971002CE871 /* CoreDataStack.swift */; };
 		81825C4E24E7664B002CE871 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81825C4D24E7664B002CE871 /* Errors.swift */; };
 		81825C5624E769C1002CE871 /* Aisle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81825C5524E769C1002CE871 /* Aisle.swift */; };
-		818C175924C8F99D00DB2719 /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175824C8F99D00DB2719 /* ItemList.swift */; };
 		818C175C24C90B7400DB2719 /* ItemListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C175B24C90B7400DB2719 /* ItemListTests.swift */; };
 		818C176324CB5D4200DB2719 /* Pods_GroceryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; };
 		818C176424CB5D4200DB2719 /* Pods_GroceryList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DAC28E8A88A4FFEA704FCD5 /* Pods_GroceryList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -86,7 +85,6 @@
 		81825C4B24E60971002CE871 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		81825C4D24E7664B002CE871 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		81825C5524E769C1002CE871 /* Aisle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aisle.swift; sourceTree = "<group>"; };
-		818C175824C8F99D00DB2719 /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		818C175B24C90B7400DB2719 /* ItemListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListTests.swift; sourceTree = "<group>"; };
 		818C176724D476DB00DB2719 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		81A8F1CB236E4E8B00EF3816 /* GroceryList-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GroceryList-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -253,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				811C9D182362B93900ADD066 /* Item.swift */,
-				818C175824C8F99D00DB2719 /* ItemList.swift */,
 				81825C5424E76993002CE871 /* Supporting Objects */,
 			);
 			path = Models;
@@ -468,7 +465,6 @@
 				81ADE0E72412F94C00934F0B /* SearchView.swift in Sources */,
 				81825C5624E769C1002CE871 /* Aisle.swift in Sources */,
 				811C9CED2362A80800ADD066 /* Home.swift in Sources */,
-				818C175924C8F99D00DB2719 /* ItemList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
