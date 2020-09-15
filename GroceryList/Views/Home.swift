@@ -10,24 +10,27 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var recordContext
-//    @FetchRequest(
+    @FetchRequest(entity: Item.entity(), sortDescriptors: []) var list: FetchedResults<Item>
 
 	@State var newItem: String              = "+ New Item"
-//	@State var items: [Item]				= [Item]()
     @State var searchIsActive: Bool         = false
-//    @State var list: ItemList
     
-
+    func Print(_ vars: Any...) -> some View {
+        for v in vars { print(v) }
+        return EmptyView()
+    }
+    
     var body: some View {
 		NavigationView {
             ZStack {
 			VStack {
                 ///Results List
-//				List {
-//                    ForEach(list.items) { item in
-//						ListRow(item: item)
-//					}
-//                }
+				List {
+                    ForEach(Array(list)) { item in
+                        self.Print(item)
+                        ListRow(item: item)
+					}
+                }
                 
                 ///Add Item Button
                 NewItemButton(searchIsActive: $searchIsActive)

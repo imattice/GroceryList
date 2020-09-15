@@ -94,17 +94,40 @@ extension Item: Identifiable {
         }
     }
     
+    private func deleteSampleItems(from context: NSManagedObjectContext) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+
+        if let entities = try? context.fetch(request) {
+            for entity in entities {
+                guard let entity = entity as? NSManagedObject else { print("could not cast to delete"); return }
+                    context.delete(entity)
+            }
+            try? context.save()
+        }
+    }
+    
     static func loadSampleItems(to context: NSManagedObjectContext) {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        
+//        deleteSampleItems(from: context)
+        if let entities = try? context.fetch(request) {
+            for entity in entities {
+                guard let entity = entity as? NSManagedObject else { print("could not cast to delete"); return }
+                    context.delete(entity)
+            }
+            try? context.save()
+        }
+        
+        let dataCount = try? context.count(for: request)
+                
+        guard let count = dataCount, count == 0 else { print("sample list data is present"); return }
 //        let sampleList: [Item] = [
-//            Item(name: "bread", quantity: (count: 3, measurement: "loaf"), variety: "white", aisle: .bread, isChecked: false),
-//            Item(name: "apple", count: 4, variety: "gala", aisle: .produce, isChecked: false),
 //            Item(name: "bean", quantity: (count: 15, measurement: "ounce"), variety: "black", aisle: .canned, isChecked: false),
 //            Item(name: "basil", quantity: (count: 2, measurement: "package"), variety: nil, aisle: .produce, isChecked: true),
 //            Item(name: "orange", count: 3, variety: nil, aisle: .produce, isChecked: false),
 //            Item(name: "banana", quantity: (count: 1, measurement: "bunch"), variety: nil, aisle: .produce, isChecked: true),
 //            Item(name: "ice cream", quantity: (count: 1, measurement: "quart"), variety: "cookies and cream", aisle: .frozen, isChecked: false),
-//            Item(name: "cheese", quantity: (count: 1, measurement: "pound"), variety: "cheddar", aisle: .dairy, isChecked: false),
-//            Item(name: "milk", quantity: (count: 1, measurement: "gallon"), variety: "2%", aisle: .dairy, isChecked: false),
 //            Item(name: "mayonaise", quantity: (count: 1, measurement: "jar"), variety: nil, aisle: .condiments, isChecked: true),
 //            Item(name: "peanut butter", quantity: (count: 15, measurement: "ounce"), variety: nil, aisle: .peanutButterAndJam),
 //            Item(name: "almond butter", quantity: (count: 1, measurement: "jar"), variety: nil, aisle: .peanutButterAndJam, isChecked: true),
@@ -121,6 +144,44 @@ extension Item: Identifiable {
         bread.measurement = "loaf"
         bread.aisle = "bread"
         bread.isChecked = false
+        bread.id = UUID().uuidString
+        
+        let apple = Item(context: context)
+        apple.name = "apple"
+        apple.count = 4
+        apple.measurement = ""
+        apple.aisle = "produce"
+        apple.isChecked = false
+        apple.id = UUID().uuidString
+
+        
+        let cheese = Item(context: context)
+        cheese.name = "cheese"
+        cheese.count = 1
+        cheese.measurement = "lbs"
+        cheese.aisle = "dairy"
+        cheese.isChecked = false
+        cheese.id = UUID().uuidString
+
+        
+        let milk = Item(context: context)
+        milk.name = "milk"
+        milk.count = 1
+        milk.measurement = "gallon"
+        milk.aisle = "dairy"
+        milk.isChecked = false
+        milk.id = UUID().uuidString
+
+
+        let tomato = Item(context: context)
+        tomato.name = "tomato"
+        tomato.count = 28
+        tomato.measurement = "ounce"
+        tomato.aisle = "canned"
+        tomato.isChecked = false
+        tomato.id = UUID().uuidString
+
+        
         
         do{
             try context.save()
