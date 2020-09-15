@@ -26,8 +26,7 @@ struct Home: View {
 			VStack {
                 ///Results List
 				List {
-                    ForEach(Array(list)) { item in
-                        self.Print(item)
+                    ForEach(list) { item in
                         ListRow(item: item)
 					}
                 }
