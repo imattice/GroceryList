@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @Environment(\.managedObjectContext) var recordContext
+    @Environment(\.managedObjectContext) var appContext
 
     @Binding var isPresented: Bool
 //    @Binding var list: ItemList
@@ -36,7 +36,7 @@ struct SearchView: View {
                                         resultItem.count = 1
                                         resultItem.aisle = searchResult.aisle
 
-                                        resultItem.save()
+                                        resultItem.save(to: self.appContext)
                                 },
                                     label: {
                                         Text(searchResult.name?.capitalized ?? "Unnamed Item")

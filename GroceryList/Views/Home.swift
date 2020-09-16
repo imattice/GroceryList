@@ -11,14 +11,21 @@ import SwiftUI
 struct Home: View {
     @Environment(\.managedObjectContext) var recordContext
     @FetchRequest(entity: Item.entity(), sortDescriptors: []) var list: FetchedResults<Item>
+//    @FetchedResults(entity: Item.entity(), sortDescriptors: []) var sectionHeaders
+    
+//    var sectionHeaders: [String] = ["Produce", "Dairy", "Bread", "Other"]
 
 	@State var newItem: String              = "+ New Item"
     @State var searchIsActive: Bool         = false
     
-    func Print(_ vars: Any...) -> some View {
-        for v in vars { print(v) }
-        return EmptyView()
-    }
+//    func sectionHeaders() -> [String] {
+//        let results =
+//        for item in
+//    }
+    
+//    func groupedList() -> [String: [Item]] -> {
+//        
+//    }
     
     var body: some View {
 		NavigationView {
