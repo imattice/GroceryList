@@ -18,11 +18,12 @@ struct Home: View {
 	@State var newItem: String              = "+ New Item"
     @State var searchIsActive: Bool         = false
     
-//    func sectionHeaders() -> [String] {
-//        let results =
-//        for item in
-//    }
     
+//    var sectionHeaders: [String] = { Item.aislesForList(in: recordContext) }()
+    
+    func sectionHeaders() -> [String] {
+        return Item.aislesForList(in: recordContext)
+    }
 //    func groupedList() -> [String: [Item]] -> {
 //        
 //    }
@@ -36,6 +37,10 @@ struct Home: View {
                     ForEach(list) { item in
                         ListRow(item: item)
 					}
+                    ForEach(sectionHeaders(), id: \.self) { header in
+                        Text(header)
+                        
+                    }
                 }
                 
                 ///Add Item Button

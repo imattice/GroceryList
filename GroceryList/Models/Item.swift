@@ -44,6 +44,52 @@ extension Item: Identifiable {
         }
     }
     
+//    struct List {
+//        
+//        var aisles: String {
+//            let request: NSFetchRequest<Item> = Item.fetchRequest()
+//
+//            let allItems = try! context.fetch(request)
+//            
+//            var result: [String] = [String]()
+//            
+//            for item in allItems {
+//                guard let aisleName = item.aisle else {
+//                    if !result.contains("other") { result.append("other") }
+//                    continue
+//                }
+//                if result.contains(aisleName) { continue }
+//                else {
+//                    result.append(aisleName)
+//                }
+//            }
+//            
+//            return result
+//        }()
+//    }
+    ///return an array containing a list of all aisles with at least one item with no duplicates
+    static func aislesForList(in context: NSManagedObjectContext) -> [String] {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+
+        let allItems = try! context.fetch(request)
+        
+        var result: [String] = [String]()
+        
+        for item in allItems {
+            guard let aisleName = item.aisle else {
+                if !result.contains("other") { result.append("other") }
+                continue
+            }
+            if result.contains(aisleName) { continue }
+            else {
+                result.append(aisleName)
+            }
+        }
+        
+        return result
+    }
+    
+    
     private static func deleteSampleItems(from context: NSManagedObjectContext) {
         print("deleting all item data")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")

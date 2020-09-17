@@ -14,12 +14,42 @@ import CoreData
 class ItemTests: XCTestCase {
     var coreDataStack: TestableCoreDataStack!
 
-    func testFetchAllItems() throws {
+    func testFetchAllItems() {
         let request = NSFetchRequest<Item>(entityName: "Item")
                 
         let count = try! coreDataStack.managedContext.count(for: request)
         
         XCTAssertEqual(count, 5)        
+    }
+    
+    func testAislesForList() {
+        let aisles = Item.aislesForList(in: coreDataStack.managedContext)
+                
+        let hasDuplicates: Bool = {
+            let set = NSCountedSet(array: aisles)
+            var dictionary: [String : Int] = [String : Int]()
+           
+            aisles.forEach { (aisle) in
+                dictionary[aisle] = set.count(for: aisle)
+            }
+            
+            for (key, value) in dictionary {
+                if value > 1 {
+                    print("duplicated value: \(key) : \(value)")
+                    return true }
+            }
+            return false
+        }()
+        
+        print(aisles)
+        
+        XCTAssertTrue(aisles.contains("bread"))
+        XCTAssertTrue(aisles.contains("produce"))
+        XCTAssertTrue(aisles.contains("dairy"))
+        XCTAssertTrue(aisles.contains("canned"))
+        XCTAssertFalse(aisles.contains("other"))
+        XCTAssertFalse(aisles.contains("frozen"))
+        XCTAssertFalse(hasDuplicates)
     }
     
     
