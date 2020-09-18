@@ -13,10 +13,10 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data
-    lazy
-    var coreDataStack: CoreDataStack = {
-        return CoreDataStack()
-    }()
+//    lazy
+//    var coreDataStack: CoreDataStack = {
+//        return CoreDataStack()
+//    }()
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

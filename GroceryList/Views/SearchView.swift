@@ -31,7 +31,7 @@ struct SearchView: View {
                     ForEach(results) { searchResult in
                                 Button(
                                     action: {
-                                        let resultItem = Item()
+                                        let resultItem = Item(context: CoreDataStack.shared.managedContext)
                                         resultItem.name = searchResult.name ?? "Unnamed Item"
                                         resultItem.count = 1
                                         resultItem.aisle = searchResult.aisle

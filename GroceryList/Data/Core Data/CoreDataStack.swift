@@ -11,12 +11,16 @@ import CoreData
 
 class CoreDataStack {
     ///The name of the core data model file that contains the entities
-    static let modelName: String = "CoreData"
+    let modelName: String = "CoreData"
+    
     ///The reference to the data model file
-    static let model: NSManagedObjectModel = {
-      let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
-      return NSManagedObjectModel(contentsOf: modelURL)!
-    }()
+//    let model: NSManagedObjectModel = {
+//        let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
+//      return NSManagedObjectModel(contentsOf: modelURL)!
+//    }()
+    
+    ///A singleton Data Stack to be used throughout the app
+    static let shared = CoreDataStack()
     
     lazy
     var managedContext: NSManagedObjectContext = {
@@ -24,7 +28,7 @@ class CoreDataStack {
     
     lazy
     var storeContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: CoreDataStack.modelName)
+        let container = NSPersistentContainer(name: modelName)
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")
