@@ -22,7 +22,7 @@ struct Home: View {
 //    var sectionHeaders: [String] = { Item.aislesForList(in: recordContext) }()
     
     func sectionHeaders() -> [String] {
-        return Item.aislesForList(in: recordContext)
+        return Item.aislesForList() //in: recordContext)
     }
 //    func groupedList() -> [String: [Item]] -> {
 //        

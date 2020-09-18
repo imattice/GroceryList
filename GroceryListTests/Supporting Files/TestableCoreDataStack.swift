@@ -13,6 +13,8 @@ import CoreData
 
 ///An In-memory data store that will be cleared each time a test is run
 class TestableCoreDataStack: CoreDataStack {
+    let modelName: String = "CoreData"
+    
     override init() {
         super.init()
        
@@ -21,7 +23,7 @@ class TestableCoreDataStack: CoreDataStack {
         persistentStoreDescription.type = NSInMemoryStoreType
 
         //set the store description to the persistent container
-        let container = NSPersistentContainer(name: TestableCoreDataStack.modelName, managedObjectModel: TestableCoreDataStack.model )
+        let container = NSPersistentContainer(name: TestableCoreDataStack.modelName, managedObjectModel: model )
         container.persistentStoreDescriptions = [persistentStoreDescription]
         container.loadPersistentStores { (_, error) in if let error = error as NSError? {
             fatalError("Unresolved error \(error), \(error.userInfo)")  } }

@@ -36,7 +36,7 @@ struct SearchView: View {
                                         resultItem.count = 1
                                         resultItem.aisle = searchResult.aisle
 
-                                        resultItem.save(to: self.appContext)
+                                        resultItem.save()
                                 },
                                     label: {
                                         Text(searchResult.name?.capitalized ?? "Unnamed Item")

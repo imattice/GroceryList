@@ -15,15 +15,14 @@ class ItemTests: XCTestCase {
     var coreDataStack: TestableCoreDataStack!
 
     func testFetchAllItems() {
-        let request = NSFetchRequest<Item>(entityName: "Item")
-                
-        let count = try! coreDataStack.managedContext.count(for: request)
+        let allItems = Item.all(coreDataStack.managedContext)
         
-        XCTAssertEqual(count, 5)        
+        XCTAssertEqual(allItems.count, 5)
     }
     
     func testAislesForList() {
-        let aisles = Item.aislesForList(in: coreDataStack.managedContext)
+        
+        let aisles = Item.aislesForList() //in: coreDataStack.managedContext)
                 
         let hasDuplicates: Bool = {
             let set = NSCountedSet(array: aisles)

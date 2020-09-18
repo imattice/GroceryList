@@ -34,8 +34,25 @@ extension Item: Identifiable {
 	func toggleCheck() {
 		isChecked = !isChecked
 	}
+    
+    ///return all stored Items
+    static func all(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) ->  [Item]  {
+        let request = NSFetchRequest<Item>(entityName: "Item")
         
-    func save(to context: NSManagedObjectContext) {
+        do {
+            //try to fetch all items and return the result
+            return try context.fetch(request)
+        } catch {
+            //if not able to complete fetch, print the error
+            //not throwing the error to prevent having to regularly mark this method as throws and having to run it in a do-try-catch every time I want to fetch all items
+            print("Unable to fetch all stored items")
+            print(error)
+            return [Item]()
+        }
+    }
+        
+    func save() {
+        let context = CoreDataStack.shared.managedContext
         context.insert(self)
         do {
             try context.save()
@@ -68,11 +85,8 @@ extension Item: Identifiable {
 //        }()
 //    }
     ///return an array containing a list of all aisles with at least one item with no duplicates
-    static func aislesForList(in context: NSManagedObjectContext) -> [String] {
-        let request: NSFetchRequest<Item> = Item.fetchRequest()
-
-        let allItems = try! context.fetch(request)
-        
+    static func aislesForList() -> [String] {
+        let allItems = Item.all()
         var result: [String] = [String]()
         
         for item in allItems {
