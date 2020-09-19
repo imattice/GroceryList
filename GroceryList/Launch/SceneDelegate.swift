@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // load the item record data from JSON into core data
         try! ItemRecord.loadJSONItemDataIfNeeded(to: appContext)
         
-        Item.loadSampleItems(to: appContext)
+        Item.loadSampleItems()
         
         // Create the SwiftUI view that provides the window contents.
         let contentView = Home()

@@ -51,8 +51,8 @@ extension Item: Identifiable {
         }
     }
         
-    func save() {
-        let context = CoreDataStack.shared.managedContext
+    ///Insert the item into the current context, then save the context
+    func save(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
         context.insert(self)
         do {
             try context.save()
@@ -61,29 +61,6 @@ extension Item: Identifiable {
         }
     }
     
-//    struct List {
-//        
-//        var aisles: String {
-//            let request: NSFetchRequest<Item> = Item.fetchRequest()
-//
-//            let allItems = try! context.fetch(request)
-//            
-//            var result: [String] = [String]()
-//            
-//            for item in allItems {
-//                guard let aisleName = item.aisle else {
-//                    if !result.contains("other") { result.append("other") }
-//                    continue
-//                }
-//                if result.contains(aisleName) { continue }
-//                else {
-//                    result.append(aisleName)
-//                }
-//            }
-//            
-//            return result
-//        }()
-//    }
     ///return an array containing a list of all aisles with at least one item with no duplicates
     static func aislesForList() -> [String] {
         let allItems = Item.all()
@@ -103,8 +80,8 @@ extension Item: Identifiable {
         return result
     }
     
-    
-    private static func deleteSampleItems(from context: NSManagedObjectContext) {
+    ///deletes all Item data from the context
+    private static func deleteAllItemData(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
         print("deleting all item data")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
 
@@ -117,11 +94,12 @@ extension Item: Identifiable {
         }
     }
     
-    static func loadSampleItems(to context: NSManagedObjectContext) {
+    ///load some sample data into the context
+    static func loadSampleItems(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
         
-        deleteSampleItems(from: context)
+        deleteAllItemData()
         
         let dataCount = try? context.count(for: request)
                 
@@ -170,8 +148,6 @@ extension Item: Identifiable {
         tomato.isChecked = false
         tomato.id = UUID().uuidString
 
-        
-        
         do{
             try context.save()
         } catch {
