@@ -13,7 +13,8 @@ struct Home: View {
 //    @FetchRequest(entity: Item.entity(), sortDescriptors: []) var list: FetchedResults<Item>
     
     var list: [Item] = Item.all()
-//    var sectionHeaders: [String] = Item.aisles()
+    @State var groupedList: [String : [Item]] = { Item.groupedList() }()
+    @State var sectionHeaders: [String] = { Item.aisles().sorted(by: <) }()
     
 //    @FetchedResults(entity: Item.entity(), sortDescriptors: []) var sectionHeaders
     
@@ -25,9 +26,9 @@ struct Home: View {
     
 //    var sectionHeaders: [String] = { Item.aislesForList(in: recordContext) }()
     
-    func sectionHeaders() -> [String] {
-        return Item.aisles() //in: recordContext)
-    }
+//    func sectionHeaders() -> [String] {
+//        return Item.aisles() //in: recordContext)
+//    }
 //    func groupedList() -> [String: [Item]] -> {
 //        
 //    }
@@ -38,11 +39,15 @@ struct Home: View {
 			VStack {
                 ///Results List
 				List {
-                    ForEach(list) { item in
-                        ListRow(item: item)
-					}
-                    ForEach(sectionHeaders(), id: \.self) { header in
-                        Text(header)
+                    ForEach(sectionHeaders, id: \.self) { title in
+                        //ensure there are items before creating a section
+//                        guard let items = groupedList[title] else { continue }
+
+                        Section(header: Text(title)) {
+                            ForEach(self.groupedList[title]!) { item in
+                                ListRow(item: item)
+                            }
+                        }
                         
                     }
                 }
