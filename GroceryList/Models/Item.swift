@@ -50,6 +50,11 @@ extension Item: Identifiable {
             return [Item]()
         }
     }
+    
+    static func groupedList(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) -> [String : [Item]] {
+        print(Item.all())
+        return Dictionary(grouping: Item.all(), by: { ($0.aisle ?? "other") } )
+    }
         
     ///Insert the item into the current context, then save the context
     func save(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
@@ -62,26 +67,27 @@ extension Item: Identifiable {
     }
     
     ///return an array containing a list of all aisles with at least one item with no duplicates
-    static func aislesForList() -> [String] {
-        let allItems = Item.all()
-        var result: [String] = [String]()
+    static func aisles() -> [String] {
+//        let allItems = Item.all()
+//        var result: [String] = [String]()
+//
+//        for item in allItems {
+//            guard let aisleName = item.aisle else {
+//                if !result.contains("other") { result.append("other") }
+//                continue
+//            }
+//            if result.contains(aisleName) { continue }
+//            else {
+//                result.append(aisleName)
+//            }
+//        }
+        return Array(Item.groupedList().keys)
         
-        for item in allItems {
-            guard let aisleName = item.aisle else {
-                if !result.contains("other") { result.append("other") }
-                continue
-            }
-            if result.contains(aisleName) { continue }
-            else {
-                result.append(aisleName)
-            }
-        }
-        
-        return result
+//        return result
     }
     
     ///deletes all Item data from the context
-    private static func deleteAllItemData(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
+    static func deleteAllItemData(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
         print("deleting all item data")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
 
@@ -96,11 +102,7 @@ extension Item: Identifiable {
     
     ///load some sample data into the context
     static func loadSampleItems(_ context: NSManagedObjectContext = CoreDataStack.shared.managedContext) {
-        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-        
-        deleteAllItemData()
-        
         let dataCount = try? context.count(for: request)
                 
         guard let count = dataCount, count == 0 else { print("sample list data is present"); return }

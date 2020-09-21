@@ -13,16 +13,17 @@ import CoreData
 
 class ItemTests: XCTestCase {
     var coreDataStack: TestableCoreDataStack!
+    lazy var testContext: NSManagedObjectContext = coreDataStack.managedContext
 
     func testFetchAllItems() {
         let allItems = Item.all(coreDataStack.managedContext)
-        
+        print(allItems)
         XCTAssertEqual(allItems.count, 5)
     }
     
     func testAislesForList() {
         
-        let aisles = Item.aislesForList() //in: coreDataStack.managedContext)
+        let aisles = Item.aisles() //in: coreDataStack.managedContext)
                 
         let hasDuplicates: Bool = {
             let set = NSCountedSet(array: aisles)
@@ -51,13 +52,21 @@ class ItemTests: XCTestCase {
         XCTAssertFalse(hasDuplicates)
     }
     
+    func testGroupedList() {
+        let groupedList = Item.groupedList(coreDataStack.managedContext)
+                
+        //test there are only four aisles in the sample data
+        XCTAssertTrue(groupedList.keys.count == 4)
+        XCTAssertTrue(groupedList["dairy"]?.count == 2)
+    }
+    
     
     //MARK: - Set up and Tear Down
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         coreDataStack = TestableCoreDataStack()
         
-        Item.loadSampleItems(to: coreDataStack.managedContext)
+        Item.loadSampleItems(coreDataStack.managedContext)
         
     }
 

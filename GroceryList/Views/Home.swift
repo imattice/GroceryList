@@ -10,7 +10,11 @@ import SwiftUI
 
 struct Home: View {
     @Environment(\.managedObjectContext) var recordContext
-    @FetchRequest(entity: Item.entity(), sortDescriptors: []) var list: FetchedResults<Item>
+//    @FetchRequest(entity: Item.entity(), sortDescriptors: []) var list: FetchedResults<Item>
+    
+    var list: [Item] = Item.all()
+//    var sectionHeaders: [String] = Item.aisles()
+    
 //    @FetchedResults(entity: Item.entity(), sortDescriptors: []) var sectionHeaders
     
 //    var sectionHeaders: [String] = ["Produce", "Dairy", "Bread", "Other"]
@@ -22,7 +26,7 @@ struct Home: View {
 //    var sectionHeaders: [String] = { Item.aislesForList(in: recordContext) }()
     
     func sectionHeaders() -> [String] {
-        return Item.aislesForList() //in: recordContext)
+        return Item.aisles() //in: recordContext)
     }
 //    func groupedList() -> [String: [Item]] -> {
 //        
